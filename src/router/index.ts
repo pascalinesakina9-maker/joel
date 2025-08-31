@@ -13,6 +13,16 @@ const routes: RouteRecordRaw[] = [
     component: () => import('../views/ParentInscription.vue'),
   },
   {
+    path: '/students',
+    name: 'Students',
+    component: () => import('../views/StudentsView.vue'),
+  },
+  {
+    path: '/classes',
+    name: 'Classes',
+    component: () => import('../views/ClassesView.vue'),
+  },
+  {
     path: '/secretariat',
     name: 'Secretariat',
     component: () => import('../views/SecretaryDashboard.vue'),
@@ -27,6 +37,13 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { top: 0 }
+    }
+  },
 })
 
 export default router
